@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # Stress-Testing & Noise-Injection Analytics Engine
 
@@ -93,3 +94,7 @@ Launch dashboard:
 The project investigates how data quality degradation can influence
 the accuracy, stability, and reliability of data-driven business
 decisions.
+=======
+# stress-testing-analytics-engine
+A data analytics framework for evaluating the impact of controlled data corruption on KPI accuracy and statistical reliability.
+>>>>>>> 23b0586302c41832ea25da8459df790f906fc978
