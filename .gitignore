@@ -1,0 +1,16 @@
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.DS_Store
+
+# Keep the original and processed datasets out of GitHub
+data/original/
+data/processed/
+data/corrupted/
+
+# Keep generated experiment outputs out of GitHub
+results/*.csv
+results/plots/*.png

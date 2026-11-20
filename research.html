@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Methodology and evaluation framework for the Stress-Testing and Noise-Injection Analytics Engine.">
+<title>Research Overview — DataResilience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0E1420;--panel:#161D2E;--panel2:#1B2438;--line:#26304A;--amber:#E8A33D;--teal:#4FBDB0;--paper:#EDEFF3;--mute:#8A93A8}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font:15px/1.65 Inter,sans-serif;background-image:linear-gradient(rgba(38,48,74,.28) 1px,transparent 1px),linear-gradient(90deg,rgba(38,48,74,.28) 1px,transparent 1px);background-size:64px 64px;background-attachment:fixed}
+.wrap{max-width:1160px;margin:auto;padding:0 28px}.mono,.eyebrow{font-family:'JetBrains Mono',monospace}.eyebrow{font-size:11px;letter-spacing:.14em;color:var(--teal);text-transform:uppercase}
+nav{position:sticky;top:0;z-index:9;background:rgba(14,20,32,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:14px;padding-bottom:14px}
+.brand{font:600 16px 'Space Grotesk';color:var(--paper);text-decoration:none}.brand span{color:var(--amber)}
+nav a:not(.brand){color:var(--mute);text-decoration:none;font-size:13px;margin-left:20px}nav a:hover{color:var(--teal)}
+.hero{padding:60px 0 35px}.hero h1{font:700 clamp(30px,4vw,46px)/1.15 'Space Grotesk';margin:12px 0}.hero p{color:var(--mute);max-width:800px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.btn{display:inline-block;padding:10px 16px;border-radius:5px;text-decoration:none;font-size:13px;font-weight:700}
+.primary{background:var(--amber);color:#1a1206}.ghost{border:1px solid var(--line);color:var(--paper)}.ghost:hover{border-color:var(--teal);color:var(--teal)}
+section{padding:38px 0}.section-head{margin-bottom:20px}.section-head h2{font:600 25px 'Space Grotesk';margin:7px 0}.section-head p{color:var(--mute);max-width:750px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:21px}.card .n{font:600 11px 'JetBrains Mono';color:var(--amber)}.card h3{font:600 17px 'Space Grotesk';margin:8px 0}.card p{font-size:13px;color:var(--mute)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);font-size:13px}.table th,.table td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}.table th{font:500 10px 'JetBrains Mono';color:var(--teal);letter-spacing:.1em}.table td{color:#cbd2df}
+.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:7px;padding:18px;color:var(--mute);font-size:13px}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mute);font:11px 'JetBrains Mono';text-align:center}
+@media(max-width:760px){.cards,.two{grid-template-columns:1fr}nav a:not(.brand){margin-left:9px;font-size:11px}}
+</style></head>
+<body>
+<nav><div class="wrap"><a class="brand" href="index.html">DATA<span>RESILIENCE</span></a>
+<div><a href="index.html">Home</a><a href="dashboard.html">Internship Dashboard</a><a href="#metrics">Metrics</a><a href="#limitations">Notes</a></div></div></nav>
+<header class="hero"><div class="wrap"><div class="eyebrow">RESEARCH OVERVIEW / EXPERIMENTAL FRAMEWORK</div>
+<h1>Evaluating the resilience of business analytics</h1>
+<p>This page documents the experiment design and evaluation approach. The live Streamlit dashboard is the interactive companion for exploring the generated results.</p>
+<div class="actions"><a class="btn primary" href="http://localhost:8501" target="_blank" rel="noopener">Open interactive dashboard ↗</a><a class="btn ghost" href="https://github.com/NaeemaNishad/stress-testing-analytics-engine" target="_blank" rel="noopener">Source repository ↗</a><a class="btn ghost" href="index.html">Back to project home</a></div>
+</div></header>
+
+<section><div class="wrap"><div class="section-head"><div class="eyebrow">01 / EVALUATION DIMENSIONS</div><h2>What the framework measures</h2><p>Each corrupted dataset is passed through the same evaluation pipeline and compared with the clean baseline.</p></div>
+<div class="cards">
+<div class="card"><div class="n">01</div><h3>Business KPIs</h3><p>Total revenue, order count, units sold, average order value and revenue per customer.</p></div>
+<div class="card"><div class="n">02</div><h3>Category analysis</h3><p>Top category and category share, used to inspect whether categorical corruption changes business interpretation.</p></div>
+<div class="card"><div class="n">03</div><h3>Segmentation stability</h3><p>Customer segment changes compared with the baseline segmentation for customers present in both datasets.</p></div>
+<div class="card"><div class="n">04</div><h3>Statistical analysis</h3><p>ANOVA statistics and p-values are monitored descriptively across the repeated experiments.</p></div>
+<div class="card"><div class="n">05</div><h3>Data completeness</h3><p>Missing-cell counts and percentages show the extent of missingness in the evaluated fields.</p></div>
+<div class="card"><div class="n">06</div><h3>Repeatability</h3><p>Multiple random seeds per scenario help expose variation between independently generated corruptions.</p></div>
+</div></div></section>
+
+<section id="metrics"><div class="wrap"><div class="section-head"><div class="eyebrow">02 / EXPERIMENT MATRIX</div><h2>Scenario configuration</h2></div>
+<div class="two"><div>
+<table class="table"><thead><tr><th>FACTOR</th><th>SETTINGS</th></tr></thead><tbody>
+<tr><td>Corruption mechanisms</td><td>Missing · Outlier · Label · Combined</td></tr>
+<tr><td>Noise intensities</td><td>5% · 15% · 30%</td></tr>
+<tr><td>Repetitions</td><td>10 random seeds per scenario</td></tr>
+<tr><td>Experimental runs</td><td>120 plus clean baseline</td></tr>
+</tbody></table></div>
+<div class="note"><strong style="color:var(--paper)">Interpreting the noise percentage</strong><br><br>
+The meaning of a noise percentage depends on the injector implementation. In the current design, the selected fraction is applied to eligible values/cells according to the chosen mechanism. The exact denominator and affected columns should be reported from the final injector code and not described as a percentage of all dataset cells unless that is how the code calculates it.</div>
+</div></div></section>
+
+<section id="limitations"><div class="wrap"><div class="section-head"><div class="eyebrow">03 / INTERPRETATION & LIMITATIONS</div><h2>What the results can — and cannot — establish</h2></div>
+<div class="cards">
+<div class="card"><h3>Dataset-specific findings</h3><p>Observed sensitivity depends on the dataset, selected columns, corruption mechanism and evaluation pipeline. Results should not be generalized as universal thresholds.</p></div>
+<div class="card"><h3>Missingness assumptions</h3><p>Randomly injected missing values model one controlled mechanism. They do not represent every real-world missing-data process.</p></div>
+<div class="card"><h3>Statistical claims</h3><p>Mean ANOVA p-values alone do not establish false-positive or false-negative rates. Those require known ground truth and an explicit repeated testing design.</p></div>
+</div></div></section>
+
+<footer><div class="wrap">DATA RESILIENCE ANALYTICS · RESEARCH OVERVIEW · INTERACTIVE ANALYSIS VIA STREAMLIT</div></footer>
+</body></html>
